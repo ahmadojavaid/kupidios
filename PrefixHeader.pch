@@ -1,0 +1,172 @@
+//
+//  PrefixHeader.pch
+//  CupidLove
+//
+//  Created by APPLE on 23/11/16.
+//  Copyright © 2016 Potenza. All rights reserved.
+//
+///RTL testing
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "MCLocalization.h"
+#import "MFSideMenu.h"
+#import "AppDelegate.h"
+#import "Util.h"
+#import "ApiManager.h"
+#import "MRProgress.h"
+#import <Photos/Photos.h>
+#import <Availability.h>
+#import "UIImageView+WebCache.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "CupidLove/Notification/TSMessages/TSMessage.h"
+#import "CupidLove/Notification/TSMessages/TSMessageView.h"
+#import "XMPPFramework.h"
+#import "SSXmppConstant.h"
+#import "NotificationCounterUpdater.h"
+#import "AdRemoveBlock.h"
+#import "Defines.h"
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+#ifndef __IPHONE_6_0
+#warning "This project uses features only available in iPhone SDK 6.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#endif
+#else
+#ifdef __OBJC__
+#import <Cocoa/Cocoa.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <AssertMacros.h>
+#import <CoreServices/CoreServices.h>
+#endif
+#endif
+#define appDelegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+
+#define appNAME                 @"CupidLove"
+
+//Change Here
+
+#define appURL @"Your API URL" //url prefix of apis
+#define imageUrl @"Your Upload URL" //url prefix for images
+
+//Do not change this code as, options for all this is set from Admin
+
+#define INSTAGRAM_CALLBACK_BASE @"INSTAGRAM_CALLBACK_BASE"
+#define INSTAGRAM_CLIENT_SECRET @"INSTAGRAM_CLIENT_SECRET"
+#define INSTAGRAM_CLIENT_ID @"INSTAGRAM_CLIENT_ID"
+#define GOOGLE_API_KEY @"GOOGLE_API_KEY" //api key for getting nearby places
+#define KadMobKey @"adMobKey" //advertisement
+#define KadMobVideoKey @"adMobVideoKey" //advertisement
+
+#define kRemoveAddInAppPurchase @"RemoveAddInAppPurchase" // IAP product
+#define kChatSubscriptionInAppPurchase @"ChatSubscriptionInAppPurchase" // IAP product
+#define kLocationInAppPurchase @"LocationInAppPurchase" // IAP product
+#define kSuperLikeInAppPurchase @"SuperLikeInAppPurchase" // IAP product
+
+
+#define kTermsAndConditionsUrl @"TermsAndConditionsUrl" //Link for terms and agreement and privacy policy
+
+#define kXMPPEnabled @"XMPPEnabled"
+#define kXMPPHostName @"XMPPHostName"
+#define kXMPPPrefix @"XMPPPrefix"  
+#define kUserPassword @"UserPassword"
+
+
+#define HostName [Util GetXMPPHostName]
+#define Userpostfix [Util GetXMPPPostfix]
+#define UserPassword [Util GetXMPPPassword]
+
+
+
+#define SHOW_LOADER_ANIMTION() [Util ShowLoader];
+#define SHOW_LOADER_ANIMTION2(VC) [Util ShowLoaderData:VC];
+#define HIDE_PROGRESS [Util hide];
+#define HIDE_PROGRESS2(VC) [Util hideData:VC];
+
+#define ALERTVIEW(MSG,VC) [Util showalert:MSG onView:VC];
+
+#define SHOW_ACTIVITE_INDICATOR [UIApplication sharedApplic9ation].networkActivityIndicatorVisible = YES;
+#define HIDE_ACTIVITE_INDICATOR [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+#define SHOW_PROGRESS(v)    [MRProgressOverlayView showOverlayAddedTo:[[UIApplication sharedApplication] keyWindow] title: [NSString stringWithFormat:@"%@..",v] mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES]
+
+#define SHOW_PROGRESS_WITH_STATUS(v) [MRProgressOverlayView showOverlayAddedTo:[[UIApplication sharedApplication] keyWindow] title:v mode:MRProgressOverlayViewModeDeterminateHorizontalBar animated:YES];
+
+#define SCREEN_SIZE [[[[UIApplication sharedApplication] keyWindow] rootViewController].view convertRect:[[UIScreen mainScreen] bounds] fromView:nil].size
+
+
+#define SCREEN_SCALE [UIScreen mainScreen].scale
+
+#define Theme_Color [UIColor colorWithRed:(250/255.0) green:(180/255.0) blue:(53/255.0) alpha:1]
+
+#define kAge @"age"
+#define kBlocked @"Blocked"
+
+#define kAddsRemoved @"AddsRemoved"
+#define kChatSubscription @"ChatSubscription"
+#define kLocationService @"LocationService"
+#define kSuperLike @"SuperLike"
+
+#define kPaidAd @"PAID_AD"
+#define kPaidChat @"PAID_CHAT"
+#define kPaidLocation @"PAID_LOCATION"
+#define kPaidSuperLike @"PAID_SUPERLIKE"
+
+#define kOneSuperLikeDone @"OneSuperLikeDone"
+
+#define kNotificationCount @"NotificationCount"
+#define kUnreadDict @"UnreadDict"
+#define kLname @"Lname"
+#define kUserName @"UserName"
+#define kuserid @"userid"
+#define kdeviceToken @"deviceToken"
+#define kauthToken @"AuthToken"
+#define kdatePref @"DatePreferceIdOrder"
+#define kgenderPref @"GenderPref"
+#define kminAgePref @"MinAgePref"
+#define kmaxAgePref @"MaxAgePref"
+#define kMinDistance @"MinDistance"
+#define kmaxDistance @"MaxDistance"
+#define kabout @"About"
+#define kimg1 @"img1"
+#define kimg2 @"img2"
+#define kimg3 @"img3"
+#define kimg4 @"img4"
+#define kimg5 @"img5"
+#define kimg6 @"img6"
+#define kEmail @"Email"
+#define kCollege @"College"
+#define kProfession @"Profession"
+#define kDOB @"DOB"
+#define kGender @"Gender"
+#define kejID @"ej_id"
+
+#define kNewUser @"isNewUser"
+
+#define klatitude @"Latitude"
+#define klongitude @"Longitude"
+#define kprofileimage @"Profileimage"
+#define kheight @"Height"
+#define kreligion @"Religion"
+#define kethnicity @"Ethnicity"
+#define kno_of_kids @"no_of_kids"
+#define kquestionID @"queID"
+#define kanswer @"Answer"
+#define kSelecttion @"Selection"
+
+#define kXmppUserRegister @"XmppUserRegister"
+#define kXmppUserLogin @"XmppUserLogin"
+#define kRefresh @"Refresh"
+
+#define kdevice @"ios"
+#define krtl @"isRTL"
+#define kinstaAuth @"instaAuth"
+
+#endif
